@@ -1,5 +1,5 @@
 import { Component, toNative, Vue } from "vue-facing-decorator";
-import { NuxtPage } from "#components";
+import { NuxtPage, NuxtLink } from "#components";
 
 @Component
 class AppShell extends Vue {
@@ -7,6 +7,12 @@ class AppShell extends Vue {
     return (
       <>
         <h1>Nuxt-MobX-Shadcn-ts demo</h1>
+        <nav style={{ marginBottom: "20px" }}>
+          <NuxtLink to="/" style={{ marginRight: "15px" }}>
+            Home (MobX Example)
+          </NuxtLink>
+          <NuxtLink to="/mdx-demo">MDX Demo</NuxtLink>
+        </nav>
         <NuxtPage />
       </>
     );
