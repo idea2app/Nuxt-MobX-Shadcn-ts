@@ -1,12 +1,13 @@
 import { Component, toNative, Vue } from "vue-facing-decorator";
 import { observer, reaction } from "mobx-vue-helper";
+import { Second } from "web-utility";
 
 import counterStore from "../models/Counter";
 
-const Second = 1000; // 1 second in milliseconds
 
 /**
- * Forked from Hello World example of WebCell v3: {@link https://github.com/EasyWebApp/WebCell-scaffold/blob/b0709951eba0550e38e803b4d93e968c9f7215b6/src/page/Clock.tsx}
+ * Forked from Hello World example of WebCell v3:
+ * {@link https://github.com/EasyWebApp/WebCell-scaffold/blob/b0709951eba0550e38e803b4d93e968c9f7215b6/src/page/Clock.tsx}
  */
 @Component
 @observer

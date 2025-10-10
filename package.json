@@ -22,6 +22,11 @@
       "vue-demi"
     ]
   },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "printWidth": 100
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
