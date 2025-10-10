@@ -16,10 +16,10 @@ export default defineNuxtConfig({
       ],
     },
     optimizeDeps: {
-      include: ["mobx", "mobx-vue-helper", "mobx-vue-lite"],
+      include: ["mobx", "mobx-vue-helper", "mobx-vue-lite", "web-utility"],
     },
     ssr: {
-      noExternal: ["mobx-vue-helper", "mobx-vue-lite"],
+      noExternal: ["mobx-vue-helper", "mobx-vue-lite", "web-utility"],
     },
   },
 });
