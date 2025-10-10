@@ -15,5 +15,11 @@ export default defineNuxtConfig({
         ["@babel/plugin-proposal-decorators", { version: "2023-05" }],
       ],
     },
+    optimizeDeps: {
+      include: ["mobx", "mobx-vue-helper", "mobx-vue-lite", "web-utility"],
+    },
+    ssr: {
+      noExternal: ["mobx-vue-helper", "mobx-vue-lite", "web-utility"],
+    },
   },
 });
