@@ -1,14 +1,10 @@
-import { makeObservable, observable, action } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
-class Counter {
+export class Counter {
   count = 0;
 
   constructor() {
-    makeObservable(this, {
-      count: observable,
-      increment: action,
-      decrement: action,
-    });
+    makeAutoObservable(this);
   }
 
   increment() {
@@ -20,6 +16,4 @@ class Counter {
   }
 }
 
-const counterStore = new Counter();
-
-export default counterStore;
+export default new Counter();
