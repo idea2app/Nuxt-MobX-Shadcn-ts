@@ -25,5 +25,8 @@ logs
 .env.*
 !.env.example
 
-app/components/ui/*
+# Cloud platforms
 .vercel
+
+# Shadcn original codes
+app/components/ui/*

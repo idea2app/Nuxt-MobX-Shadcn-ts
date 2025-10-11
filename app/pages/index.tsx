@@ -5,7 +5,6 @@ import { Second } from "web-utility";
 import counterStore from "../models/Counter";
 import { Button } from "../components/ui/button";
 
-
 /**
  * Forked from Hello World example of WebCell v3:
  * {@link https://github.com/EasyWebApp/WebCell-scaffold/blob/b0709951eba0550e38e803b4d93e968c9f7215b6/src/page/Clock.tsx}
@@ -40,8 +39,8 @@ class IndexPage extends Vue {
         </h2>
         <div class="flex gap-2 items-center">
           <p>Count: {counterStore.count}</p>
-          <Button variant="primary" onClick={() => counterStore.increment()}>Increment</Button>
-          <Button variant="secondary" onClick={() => counterStore.decrement()}>Decrement</Button>
+          <Button variant="outline" onClick={() => counterStore.increment()}>Increment</Button>
+          <Button variant="ghost" onClick={() => counterStore.decrement()}>Decrement</Button>
         </div>
 
         <h2>Timer example</h2>

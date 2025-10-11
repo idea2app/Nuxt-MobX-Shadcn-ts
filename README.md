@@ -77,31 +77,21 @@ This scaffold is configured with [Shadcn-Vue][4], a Vue port of shadcn/ui that p
 
 The project includes:
 
-- **components.json**: Configuration file for the shadcn-vue CLI
+- **components.json**: Configuration file for the `shadcn-vue` CLI
 - **Tailwind CSS v4**: Configured with design tokens in `app/assets/css/main.css`
 - **Utility function**: `app/lib/utils.ts` with the `cn` helper for class merging
 - **Component location**: UI components are located in `app/components/ui/`
 
-#### Adding Components
+#### Manage components
 
-To add new Shadcn-Vue components to your project:
-
-```bash
-pnpm dlx shadcn-vue@latest add <component-name>
-```
-
-For example, to add a button component:
-
-```bash
-pnpm dlx shadcn-vue@latest add button
-```
+https://github.com/idea2app/ShadcnX
 
 #### Using Components
 
 Import and use Shadcn-Vue components in your TSX files:
 
 ```tsx
-import { Button } from "../components/ui";
+import { Button } from "../components/ui/button";
 
 // In your render method
 <Button onClick={() => doSomething()}>Click me</Button>
@@ -122,15 +112,14 @@ app/
 ├── components/
 │   ├── Link.tsx         # Custom link component for MDX
 │   └── ui/              # Shadcn-Vue components
-│       ├── Button.tsx   # Button component
-│       └── index.ts     # Component exports and variants
 ├── lib/
-│   └── utils.ts         # Utility functions (cn helper)
+│   └── utils.ts         # Utility functions
 ├── models/
 │   └── Counter.ts       # MobX counter store
-└── pages/
-    ├── index.tsx        # Home page with MobX & Shadcn-Vue examples
-    └── MDX.tsx          # MDX dynamic rendering demo
+├── pages/
+│    ├── index.tsx       # Home page with MobX & Shadcn-Vue examples
+│    └── MDX.tsx         # MDX dynamic rendering demo
+└── plugins/             # Nuxt.js plugins
 components.json          # Shadcn-Vue CLI configuration
 ```
 
