@@ -5,11 +5,10 @@ import { evaluate } from '@mdx-js/mdx';
 
 import { Link } from '../components/Link';
 
-const evaluateMDX = () =>
+const evaluateMDX = (link: string) =>
   defineAsyncComponent(async () => {
-    const { data, error } = await useFetch<string>(
-      'https://cdn.jsdelivr.net/gh/idea2app/Nuxt-MobX-Shadcn-ts/README.md'
-    );
+    const { data, error } = await useFetch<string>(link);
+
     if (error.value) throw new URIError(error.value?.message);
 
     const { default: MDXContent } = await evaluate(data.value!, runtime);
@@ -19,7 +18,7 @@ const evaluateMDX = () =>
 
 @Component
 class MdxDemoPage extends Vue {
-  @Setup(evaluateMDX)
+  @Setup(() => evaluateMDX('https://cdn.jsdelivr.net/gh/idea2app/Nuxt-MobX-Shadcn-ts/README.md'))
   MDXContent?: ReturnType<typeof evaluateMDX>;
 
   render() {
@@ -27,8 +26,6 @@ class MdxDemoPage extends Vue {
 
     return (
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
-        <h1>MDX Dynamic Rendering Demo</h1>
-        <hr />
         <Suspense>{MDXContent ? <MDXContent /> : <p>Loading MDX content...</p>}</Suspense>
       </div>
     );

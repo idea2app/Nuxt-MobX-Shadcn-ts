@@ -63,7 +63,7 @@ import * as runtime from 'vue/jsx-runtime';
 
 import { Link } from './components/Link';
 
-const { default: MDXContent } = await evaluate(markdownContent, runtime);
+const { default: MDXContent } = await evaluate('# Some Markdown', runtime);
 
 // Replace <a> tags with custom Link component
 <MDXContent components={{ a: Link }} />;

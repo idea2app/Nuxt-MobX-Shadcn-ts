@@ -32,8 +32,6 @@ class IndexPage extends Vue {
   render() {
     return (
       <>
-        <h1>Hello World from Decorator Component!</h1>
-
         <h2>
           MobX <code>@observer</code> example
         </h2>
