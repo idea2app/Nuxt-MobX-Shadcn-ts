@@ -98,21 +98,18 @@ pnpm dlx shadcn-vue@latest add button
 
 #### Using Components
 
-Import and use Shadcn-Vue components in your pages:
+Import and use Shadcn-Vue components in your TSX files:
 
-```vue
-<script setup lang="ts">
-import Button from '~/components/ui/Button.vue'
-</script>
+```tsx
+import { Button } from "../components/ui";
 
-<template>
-  <Button variant="default">Click me</Button>
-  <Button variant="outline">Outlined</Button>
-  <Button variant="ghost">Ghost</Button>
-</template>
+// In your render method
+<Button onClick={() => doSomething()}>Click me</Button>
+<Button variant="outline">Outlined</Button>
+<Button variant="ghost">Ghost</Button>
 ```
 
-See the `/shadcn-demo` page for more examples.
+See the homepage (`app/pages/index.tsx`) for a working example.
 
 ## Project Structure
 
@@ -125,16 +122,15 @@ app/
 ├── components/
 │   ├── Link.tsx         # Custom link component for MDX
 │   └── ui/              # Shadcn-Vue components
-│       ├── Button.vue   # Button component
+│       ├── Button.tsx   # Button component
 │       └── index.ts     # Component exports and variants
 ├── lib/
 │   └── utils.ts         # Utility functions (cn helper)
 ├── models/
 │   └── Counter.ts       # MobX counter store
 └── pages/
-    ├── index.tsx        # Home page with MobX examples
-    ├── MDX.tsx          # MDX dynamic rendering demo
-    └── shadcn-demo.vue  # Shadcn-Vue components demo
+    ├── index.tsx        # Home page with MobX & Shadcn-Vue examples
+    └── MDX.tsx          # MDX dynamic rendering demo
 components.json          # Shadcn-Vue CLI configuration
 ```
 
