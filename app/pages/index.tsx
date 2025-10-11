@@ -3,7 +3,7 @@ import { observer, reaction } from "mobx-vue-helper";
 import { Second } from "web-utility";
 
 import counterStore from "../models/Counter";
-
+import { Button } from "../components/ui/button";
 
 /**
  * Forked from Hello World example of WebCell v3:
@@ -32,15 +32,13 @@ class IndexPage extends Vue {
   render() {
     return (
       <>
-        <h1>Hello World from Decorator Component!</h1>
-
         <h2>
           MobX <code>@observer</code> example
         </h2>
-        <div>
+        <div class="flex gap-2 items-center">
           <p>Count: {counterStore.count}</p>
-          <button onClick={() => counterStore.increment()}>Increment</button>
-          <button onClick={() => counterStore.decrement()}>Decrement</button>
+          <Button variant="outline" onClick={() => counterStore.increment()}>Increment</Button>
+          <Button variant="ghost" onClick={() => counterStore.decrement()}>Decrement</Button>
         </div>
 
         <h2>Timer example</h2>

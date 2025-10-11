@@ -1,25 +1,28 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from '@tailwindcss/vite';
+
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  modules: ["shadcn-nuxt"],
+  css: ["~/assets/css/main.css"],
   // Fuck the Vite & Nuxt.js official document: https://nuxt.com/docs/4.x/guide/going-further/experimental-features#decorators
   // Believe Vue-facing-decorator issue: https://github.com/facing-dev/vue-facing-decorator/issues/93#issuecomment-1927058662
   vite: {
+    plugins: [tailwindcss()],
     vue: {
       script: {
-        babelParserPlugins: ["decorators"],
+        babelParserPlugins: ['decorators'],
       },
     },
     vueJsx: {
-      babelPlugins: [
-        ["@babel/plugin-proposal-decorators", { version: "2023-05" }],
-      ],
+      babelPlugins: [['@babel/plugin-proposal-decorators', { version: '2023-05' }]],
     },
     optimizeDeps: {
-      include: ["mobx", "mobx-vue-helper", "mobx-vue-lite", "web-utility"],
+      include: ['mobx', 'mobx-vue-helper', 'mobx-vue-lite', 'web-utility'],
     },
     ssr: {
-      noExternal: ["mobx-vue-helper", "mobx-vue-lite", "web-utility"],
+      noExternal: ['mobx-vue-helper', 'mobx-vue-lite', 'web-utility'],
     },
   },
 });

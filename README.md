@@ -63,24 +63,64 @@ import * as runtime from 'vue/jsx-runtime';
 
 import { Link } from './components/Link';
 
-const { default: MDXContent } = await evaluate(markdownContent, runtime);
+const { default: MDXContent } = await evaluate('# Some Markdown', runtime);
 
 // Replace <a> tags with custom Link component
 <MDXContent components={{ a: Link }} />;
 ```
+
+### Shadcn-Vue Integration
+
+This scaffold is configured with [Shadcn-Vue][4], a Vue port of shadcn/ui that provides beautifully designed components built with [Radix Vue][14] and [Tailwind CSS][15].
+
+#### Configuration
+
+The project includes:
+
+- **components.json**: Configuration file for the `shadcn-vue` CLI
+- **Tailwind CSS v4**: Configured with design tokens in `app/assets/css/main.css`
+- **Utility function**: `app/lib/utils.ts` with the `cn` helper for class merging
+- **Component location**: UI components are located in `app/components/ui/`
+
+#### Manage components
+
+https://github.com/idea2app/ShadcnX
+
+#### Using Components
+
+Import and use Shadcn-Vue components in your TSX files:
+
+```tsx
+import { Button } from "../components/ui/button";
+
+// In your render method
+<Button onClick={() => doSomething()}>Click me</Button>
+<Button variant="outline">Outlined</Button>
+<Button variant="ghost">Ghost</Button>
+```
+
+See the homepage (`app/pages/index.tsx`) for a working example.
 
 ## Project Structure
 
 ```
 app/
 ├── app.tsx              # App shell with navigation
+├── assets/
+│   └── css/
+│       └── main.css     # Tailwind CSS configuration and theme
 ├── components/
-│   └── Link.tsx         # Custom link component for MDX
+│   ├── Link.tsx         # Custom link component for MDX
+│   └── ui/              # Shadcn-Vue components
+├── lib/
+│   └── utils.ts         # Utility functions
 ├── models/
 │   └── Counter.ts       # MobX counter store
-└── pages/
-    ├── index.tsx        # Home page with MobX examples
-    └── MDX.tsx          # MDX dynamic rendering demo
+├── pages/
+│    ├── index.tsx       # Home page with MobX & Shadcn-Vue examples
+│    └── MDX.tsx         # MDX dynamic rendering demo
+└── plugins/             # Nuxt.js plugins
+components.json          # Shadcn-Vue CLI configuration
 ```
 
 ## Setup
@@ -127,20 +167,20 @@ bun run preview
 
 ## Deployment
 
-Check out the [Nuxt deployment documentation][14] for more information.
+Check out the [Nuxt deployment documentation][16] for more information.
 
 ## Best Practices
 
 1. Install GitHub apps in your organization or account:
 
-   - [Probot settings][15]: set up Issue labels & Pull Request rules
-   - [PR badge][16]: set up Online [VS Code][17] editor entries in Pull Request description
+   - [Probot settings][17]: set up Issue labels & Pull Request rules
+   - [PR badge][18]: set up Online [VS Code][19] editor entries in Pull Request description
 
 2. Click the **Use this template button** to create your own repository
 
 3. Click the **Open in GitHub codespaces button** to start an online VS Code development environment immediately
 
-4. Set [Vercel variables][18] as [Repository secrets][19], then every commit will get an independent **Preview URL**
+4. Set [Vercel variables][20] as [Repository secrets][21], then every commit will get an independent **Preview URL**
 
 5. Recommend to add a Notification step in GitHub actions for your Team IM app
 
@@ -150,7 +190,7 @@ Check out the [Nuxt deployment documentation][14] for more information.
 
 ## Recommended IDE setup
 
-Use [VS Code][17] + TypeScript LSP + [Prettier][20] to enjoy the best Developer Experience, and get rid of loo...oow performance Vue official extension!!!
+Use [VS Code][19] + TypeScript LSP + [Prettier][22] to enjoy the best Developer Experience, and get rid of loo...oow performance Vue official extension!!!
 
 [1]: https://nuxt.com/
 [2]: https://www.typescriptlang.org/
@@ -165,10 +205,12 @@ Use [VS Code][17] + TypeScript LSP + [Prettier][20] to enjoy the best Developer 
 [11]: https://facing-dev.github.io/vue-facing-decorator/
 [12]: https://mdxjs.com/
 [13]: https://github.com/idea2app/MobX-Vue-helper
-[14]: https://nuxt.com/docs/getting-started/deployment
-[15]: https://probot.github.io/apps/settings/
-[16]: https://pullrequestbadge.com/
-[17]: https://code.visualstudio.com/
-[18]: https://github.com/idea2app/Next-Bootstrap-ts/blob/80967ed49045af9dbcf4d3695a2c39d53a6f71f1/.github/workflows/pull-request.yml#L9-L11
-[19]: https://github.com/idea2app/Nuxt-MobX-Shadcn-ts/settings/secrets/actions
-[20]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+[14]: https://www.radix-vue.com/
+[15]: https://tailwindcss.com/
+[16]: https://nuxt.com/docs/getting-started/deployment
+[17]: https://probot.github.io/apps/settings/
+[18]: https://pullrequestbadge.com/
+[19]: https://code.visualstudio.com/
+[20]: https://github.com/idea2app/Next-Bootstrap-ts/blob/80967ed49045af9dbcf4d3695a2c39d53a6f71f1/.github/workflows/pull-request.yml#L9-L11
+[21]: https://github.com/idea2app/Nuxt-MobX-Shadcn-ts/settings/secrets/actions
+[22]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
