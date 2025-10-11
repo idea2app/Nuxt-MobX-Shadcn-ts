@@ -7,10 +7,9 @@ class AppShell extends Vue {
     return (
       <>
         <h1>Nuxt-MobX-Shadcn-ts demo</h1>
-        <nav style={{ display: "flex", gap: "15px", marginBottom: "20px" }}>
+        <nav class="flex gap-4 mb-5">
           <NuxtLink to="/">Home (MobX demo)</NuxtLink>
           <NuxtLink to="/MDX">MDX demo</NuxtLink>
-          <NuxtLink to="/shadcn-demo">Shadcn-Vue demo</NuxtLink>
         </nav>
         <NuxtPage />
       </>

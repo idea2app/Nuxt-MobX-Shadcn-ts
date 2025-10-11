@@ -3,6 +3,7 @@ import { observer, reaction } from "mobx-vue-helper";
 import { Second } from "web-utility";
 
 import counterStore from "../models/Counter";
+import { Button } from "../components/ui";
 
 
 /**
@@ -37,10 +38,10 @@ class IndexPage extends Vue {
         <h2>
           MobX <code>@observer</code> example
         </h2>
-        <div>
+        <div class="flex gap-2 items-center">
           <p>Count: {counterStore.count}</p>
-          <button onClick={() => counterStore.increment()}>Increment</button>
-          <button onClick={() => counterStore.decrement()}>Decrement</button>
+          <Button onClick={() => counterStore.increment()}>Increment</Button>
+          <Button variant="outline" onClick={() => counterStore.decrement()}>Decrement</Button>
         </div>
 
         <h2>Timer example</h2>
