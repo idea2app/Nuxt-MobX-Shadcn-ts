@@ -31,6 +31,15 @@
     "unplugin-swc": "^1.6.0",
     "vue-jsx-vapor": "3.3.0-rc.2"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@swc/core",
+      "@tailwindcss/oxide",
+      "esbuild",
+      "vue-demi"
+    ]
+  },
   "prettier": {
     "singleQuote": true,
     "arrowParens": "avoid",

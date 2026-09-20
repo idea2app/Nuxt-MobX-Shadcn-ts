@@ -1,0 +1,5 @@
+packages:
+  - .
+
+overrides:
+  '@ungap/structured-clone': 1.3.1
