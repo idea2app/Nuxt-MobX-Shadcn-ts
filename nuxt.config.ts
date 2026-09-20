@@ -15,7 +15,21 @@ export default defineNuxtConfig({
   modules: ['shadcn-nuxt', 'vue-jsx-vapor/nuxt'],
   css: ['~/assets/css/main.css'],
   vite: {
-    plugins: [tailwindcss(), swc.vite(), removeNuxtVueJsxPlugin()],
+    plugins: [
+      tailwindcss(),
+      swc.vite({
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            decorators: true,
+          },
+          transform: {
+            decoratorVersion: '2022-03',
+          },
+        },
+      }),
+      removeNuxtVueJsxPlugin(),
+    ],
     optimizeDeps: {
       include: ['mobx', 'mobx-vue-helper', 'mobx-vue-lite', 'web-utility'],
     },
