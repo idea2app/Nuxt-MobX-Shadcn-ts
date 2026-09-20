@@ -1,23 +1,49 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite';
+import swc from 'unplugin-swc';
+import VueJsxVapor from 'vue-jsx-vapor/vite';
+
+const swcDecoratorPlugin = () => {
+  const plugin = swc.vite({
+    include: /\.[cm]?tsx?$/,
+    jsc: {
+      externalHelpers: true,
+      parser: {
+        syntax: 'typescript',
+        decorators: true,
+        tsx: true,
+      },
+      transform: {
+        decoratorVersion: '2022-03',
+        react: {
+          runtime: 'preserve',
+        },
+      },
+    },
+  });
+
+  return { ...plugin, enforce: 'pre' as const };
+};
+
+const removeNuxtVueJsxPlugin = () => ({
+  name: 'remove-nuxt-vue-jsx-plugin',
+  configResolved(config: { plugins: { name?: string }[] }) {
+    config.plugins = config.plugins.filter(({ name }) => name !== 'vite:vue-jsx');
+  },
+});
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ["shadcn-nuxt"],
-  css: ["~/assets/css/main.css"],
-  // Fuck the Vite & Nuxt.js official document: https://nuxt.com/docs/4.x/guide/going-further/experimental-features#decorators
-  // Believe Vue-facing-decorator issue: https://github.com/facing-dev/vue-facing-decorator/issues/93#issuecomment-1927058662
+  modules: ['shadcn-nuxt'],
+  css: ['~/assets/css/main.css'],
   vite: {
-    plugins: [tailwindcss()],
-    vue: {
-      script: {
-        babelParserPlugins: ['decorators'],
-      },
-    },
-    vueJsx: {
-      babelPlugins: [['@babel/plugin-proposal-decorators', { version: '2023-05' }]],
-    },
+    plugins: [
+      tailwindcss(),
+      swcDecoratorPlugin(),
+      VueJsxVapor(),
+      removeNuxtVueJsxPlugin(),
+    ],
     optimizeDeps: {
       include: ['mobx', 'mobx-vue-helper', 'mobx-vue-lite', 'web-utility'],
     },
