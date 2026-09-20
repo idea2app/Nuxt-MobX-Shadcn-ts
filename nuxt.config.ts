@@ -9,6 +9,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss(), swc.vite()],
+    vueJsx: {
+      include: [/^$/],
+    },
     optimizeDeps: {
       include: ['mobx', 'mobx-vue-helper', 'mobx-vue-lite', 'web-utility'],
     },
