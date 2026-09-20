@@ -1,6 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite';
 import swc from 'unplugin-swc';
+import VueJsxVapor from 'vue-jsx-vapor/vite';
+
+const swcDecoratorPlugin = () => {
+  const plugin = swc.vite({
+    include: /\.[cm]?tsx?$/,
+    jsc: {
+      externalHelpers: true,
+      parser: {
+        syntax: 'typescript',
+        decorators: true,
+        tsx: true,
+      },
+      transform: {
+        decoratorVersion: '2022-03',
+        react: {
+          runtime: 'preserve',
+        },
+      },
+    },
+  });
+
+  return { ...plugin, enforce: 'pre' as const };
+};
 
 const removeNuxtVueJsxPlugin = () => ({
   name: 'remove-nuxt-vue-jsx-plugin',
@@ -12,22 +35,13 @@ const removeNuxtVueJsxPlugin = () => ({
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['shadcn-nuxt', 'vue-jsx-vapor/nuxt'],
+  modules: ['shadcn-nuxt'],
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [
       tailwindcss(),
-      swc.vite({
-        jsc: {
-          parser: {
-            syntax: 'typescript',
-            decorators: true,
-          },
-          transform: {
-            decoratorVersion: '2022-03',
-          },
-        },
-      }),
+      swcDecoratorPlugin(),
+      VueJsxVapor(),
       removeNuxtVueJsxPlugin(),
     ],
     optimizeDeps: {
