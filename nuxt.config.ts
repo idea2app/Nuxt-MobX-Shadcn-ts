@@ -10,6 +10,8 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss(), swc.vite()],
     vueJsx: {
+      // Keep Nuxt's default Babel-based JSX plugin from touching app TSX files;
+      // vue-jsx-vapor now owns JSX compilation instead.
       include: [/^$/],
     },
     optimizeDeps: {

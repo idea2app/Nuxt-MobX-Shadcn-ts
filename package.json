@@ -29,15 +29,7 @@
     "tailwindcss": "^4.1.14",
     "typescript": "^5.9.3",
     "unplugin-swc": "^1.6.0",
-    "vue-jsx-vapor": "^3.2.25"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "@tailwindcss/oxide",
-      "esbuild",
-      "vue-demi"
-    ]
+    "vue-jsx-vapor": "3.3.0-rc.2"
   },
   "prettier": {
     "singleQuote": true,
