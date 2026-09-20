@@ -1,5 +1,9 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "jsx": "preserve"
+  },
   "files": [],
   "references": [
     {
